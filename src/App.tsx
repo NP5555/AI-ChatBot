@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bot, Github, Linkedin, UserCircle } from 'lucide-react';
+import { Bot, Sparkles, Github, Linkedin, UserCircle } from 'lucide-react';
 import { ChatMessage } from './components/ChatMessage';
 import { ChatInput } from './components/ChatInput';
 import type { ChatState, Message } from './types';
@@ -16,7 +16,6 @@ function App() {
   const sendMessage = async (content: string) => {
     const userMessage: Message = { role: 'user', content };
     
-    // First update: Add only the user message and set loading state
     setChatState(prev => ({
       ...prev,
       messages: [...prev.messages, userMessage],
@@ -74,7 +73,6 @@ function App() {
         content: data.candidates[0].content.parts[0].text,
       };
 
-      // Second update: Add only the assistant message and clear loading state
       setChatState(prev => ({
         ...prev,
         messages: [...prev.messages, assistantMessage],
@@ -89,7 +87,6 @@ function App() {
           : 'Sorry, I encountered an error. Please try again.',
       };
       
-      // Error update: Add only the error message and clear loading state
       setChatState(prev => ({
         ...prev,
         messages: [...prev.messages, errorMessage],
@@ -103,10 +100,12 @@ function App() {
       {/* Header */}
       <header className="bg-white border-b">
         <div className="max-w-4xl mx-auto p-4 flex items-center gap-2">
-          <Bot className="w-8 h-8 text-blue-500" />
-          <h1 className="text-xl font-semibold">
-          Chat Bot by <span className="font-bold">naeem_ashraf</span> </h1>
-
+          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <Bot className="w-8 h-8 text-blue-500" />
+            <h1 className="text-xl font-semibold">
+              ChatBot made by <span className="font-bold">naeem_dev</span>
+            </h1>
+          </a>
         </div>
       </header>
 
@@ -116,7 +115,7 @@ function App() {
           {chatState.messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-[calc(100vh-180px)] text-center p-8">
               <Bot className="w-12 h-12 text-blue-500 mb-4" />
-              <h2 className="text-2xl font-semibold mb-2">Welcome to Gemini 1.5 Pro Chat </h2>
+              <h2 className="text-2xl font-semibold mb-2">Welcome to Gemini 1.5 Pro Chat</h2>
               <p className="text-gray-600">Start a conversation by typing a message below.</p>
             </div>
           ) : (
@@ -126,11 +125,19 @@ function App() {
           )}
           {chatState.isLoading && (
             <div className="p-6 bg-gray-50">
-              <div className="animate-pulse flex gap-4">
-                <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
-                <div className="flex-1 space-y-2">
-                  <div className="h-4 bg-gray-300 rounded w-3/4"></div>
-                  <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+              <div className="flex items-center gap-4 animate-pulse">
+                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                  <Bot className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 max-w-2xl">
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <Sparkles className="w-4 h-4 animate-spin text-blue-500" />
+                    <span>Thinking...</span>
+                  </div>
+                  <div className="mt-2 space-y-2">
+                    <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                    <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -140,23 +147,21 @@ function App() {
 
       {/* Chat Input */}
       <ChatInput onSend={sendMessage} disabled={chatState.isLoading} />
-
-      <footer className="bottom-0 w-full py-4 mt-5 bg-white/80 backdrop-blur-sm border-t">
+      <footer className="w-full py-4 mt-auto bg-white/80 backdrop-blur-sm border-t">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <h1 className="text-xl font-semibold">
-              made with ❤️ by <span className="font-bold">naeem_ashraf</span>
+              Made with ❤️ by <span className="font-bold">naeem_ashraf</span>
             </h1>
             <div className="flex items-center gap-4">
             <a 
-                href="https://github.com/np5555" 
+                href="http://naeem-ashraf.vercel.app" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 transition-colors"
               >
                 <UserCircle size={24} />
               </a>
-
               <a 
                 href="https://github.com/np5555" 
                 target="_blank" 
@@ -165,11 +170,6 @@ function App() {
               >
                 <Github size={24} />
               </a>
-
-
-
-
-              {/* <UserCircle className="w-6 h-6 mr-2" /> Made with ❤️ by <span className="font-bold ml-1">naeem_ashraf</span> */}
               <a 
                 href="https://www.linkedin.com/in/naeem-ashraf-242663190" 
                 target="_blank" 
