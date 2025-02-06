@@ -8,7 +8,7 @@ Welcome to **Gemini Chatbot**! This project is a chatbot powered by Google's **G
 
 <div align="center">
   <img src="./src/preview/iPhone-13-PRO-localhost.png" alt="Mobile Preview" width="45%" />
-  <!-- <img src="./src//preview/screencapture-localhost-5173-2025-02-06-16_01_16.png" alt="Tablet Preview" width="45%"  /> -->
+  <img src="./src//preview/iPhone-13-PRO-localhost (1).png" alt="Tablet Preview" width="45%"  />
 </div>
 
 ---
