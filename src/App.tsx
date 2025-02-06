@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bot } from 'lucide-react';
+import { Bot, Github, Linkedin } from 'lucide-react';
 import { ChatMessage } from './components/ChatMessage';
 import { ChatInput } from './components/ChatInput';
 import type { ChatState, Message } from './types';
@@ -141,6 +141,34 @@ function App() {
 
       {/* Chat Input */}
       <ChatInput onSend={sendMessage} disabled={chatState.isLoading} />
+
+      <footer className="bottom-0 w-full py-4 mt-5 bg-white/80 backdrop-blur-sm border-t">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+            <h1 className="text-xl font-semibold">
+              made with ❤️ by <span className="font-bold">naeem_ashraf</span>
+            </h1>
+            <div className="flex items-center gap-4">
+              <a 
+                href="https://github.com/np5555" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 transition-colors"
+              >
+                <Github size={24} />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/naeem-ashraf-242663190" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 transition-colors"
+              >
+                <Linkedin size={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
